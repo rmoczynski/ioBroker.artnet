@@ -217,7 +217,15 @@ var adapter = utils.Adapter({
     ready: function () {
         adapter.config.universe = parseInt(adapter.config.universe, 10) || 0;
 
-        artnet = require('artnet')({host: adapter.config.host, port: parseInt(adapter.config.port, 10) || 6454, sendAll: true});
+        var options = {
+            host: adapter.config.host,
+            port: parseInt(adapter.config.port, 10) || 6454,
+            sendAll: true,
+            callback: function(a,b,c) {
+                adapter.log.debug('Test - ' + a + ', ' + b + ', ' + c + ', ' + this);
+            }
+        };
+        artnet = require('artnet')(options);
 
         adapter.subscribeStates('*');
         adapter.subscribeObjects('*');
