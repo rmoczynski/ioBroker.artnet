@@ -23,7 +23,7 @@
     "IoT"
   ],
   "dependencies": {
-    "artnet": "^1.4.0",
+    "artnet": "git://github.com/rmoczynski/artnet.git",
     "@iobroker/adapter-core": "^1.0.3"
   },
   "devDependencies": {
